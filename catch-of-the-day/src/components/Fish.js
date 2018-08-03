@@ -1,10 +1,25 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { formatPrice } from '../helpers';
 
+
 class Fish extends React.Component {
+	static propTypes = {
+		details: PropTypes.shape({
+			image: PropTypes.string,
+			name: PropTypes.string,
+			price: PropTypes.string,
+			desc: PropTypes.string, 
+			status: PropTypes.string,
+			price: PropTypes.number
+		}),
+		addToOrder: PropTypes.func,
+	}
+
 	handleClick = () => {
 		this.props.addToOrder(this.props.index);
 	}
+
 	render() {
 		const { image, name, price, desc, status } = this.props.details;
 
@@ -26,5 +41,6 @@ class Fish extends React.Component {
 		);
 	}
 };
+
 
 export default Fish;
